@@ -1,7 +1,10 @@
 
         <!-- Nav Bar Start -->
-        <?php include('includes/header.php');
- include('includes/nav.php')
+<?php 
+ session_start();
+
+include('includes/header.php');
+ include('includes/nav.php');
 ?>
         <!-- Nav Bar End -->      
         
@@ -87,6 +90,16 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="contact-form">
+                        <?php       
+                            if (isset($_SESSION['success']) && $_SESSION['success'] !='') {
+                                echo '<h2>'.$_SESSION['success'].'</h2>';
+                                unset($_SESSION['success']);
+                            }
+                            if (isset($_SESSION['contact_status']) && $_SESSION['contact_status'] !='') {
+                                echo '<h2 class="text-info">'.$_SESSION['contact_status'].'</h2>';
+                                unset($_SESSION['contact_status']);
+                            }
+                        ?>
                             <form action="code.php" method="post">
                                 <div class="row">
                                     <div class="col-md-6">
