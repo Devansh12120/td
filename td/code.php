@@ -103,20 +103,20 @@ if (isset($_POST['contact_btn'])) {
     $email = $_POST['email'];
     $subject = $_POST['subject'];
     $message = $_POST['message'];
-                $query = "INSERT INTO users (fname, lname, email, mobile, password) VALUES 
-                ('$fname', '$lname', '$email', '$mobile', '$password')";
+                $query = "INSERT INTO contact (name, email, mobile, subject, message) VALUES 
+                ('$fname', '$email', '$mobile', '$subject', '$message')";
                 $query_run = mysqli_query($connection,$query);
                 if($query_run)
                 {
-                    $_SESSION['status'] = "Your account has been created successfully !!";
+                    $_SESSION['contact_status'] = "Our team will connect you soon !!";
                     $_SESSION['status_code'] = "success";
-                    header('Location: login.php');
+                    header('Location: contact.php');
                 }
                 else 
                 {
-                    $_SESSION['status'] = "Try after some time";
+                    $_SESSION['contact_status'] = "Try after some time";
                     $_SESSION['status_code'] = "error";
-                    header('Location: login.php');  
+                    header('Location: contact.php');  
                 }
             
 
